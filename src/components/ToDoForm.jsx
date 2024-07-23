@@ -1,8 +1,10 @@
 import { useRef } from "react"
+import { useLanguageContext } from "../contexts/LanguageContext"
 
 const ToDoForm = ({onFormSubmit, todo}) => {
 
     const todoRef = useRef()
+    const {texts} = useLanguageContext()
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -16,11 +18,11 @@ const ToDoForm = ({onFormSubmit, todo}) => {
     return <form onSubmit={onSubmit}>
         <input 
             type="text" 
-            placeholder="todo task" 
+            placeholder={texts.placeholder} 
             ref={todoRef}
             defaultValue={todo}
         />
-        <button>Submit</button>
+        <button>{texts.submit}</button>
     </form>
 }
 
